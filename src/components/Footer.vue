@@ -1,7 +1,7 @@
 <template>
-    <footer>
-        <p>&copy; 2020 - Rayandika</p>
-    </footer>
+<v-footer class="pa-4">
+    <p>&copy; 2020 - Rayandika</p>
+</v-footer>
 </template>
 <script>
     export default {

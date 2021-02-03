@@ -1,32 +1,48 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
-</template>
+  <v-app>
+    <Header></Header>
 
-<style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
+    <v-scale-transition>
+      <div v-if="!loading" class="text-center">
+        <v-content>
+          <router-view></router-view>
+        </v-content>
+      </div>
+    </v-scale-transition>
 
-  #nav {
-    padding: 30px;
-  }
 
-  #nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
+    <Footer></Footer>
 
-  #nav a.router-link-exact-active {
-    color: #42b983;
-  }
-</style>
+    <v-snackbar v-model="$store.state.snackbar.show" :timeout="$store.state.snackbar.timeout" top rounded="pill"
+      color="green">
+      {{ $store.state.snackbar.text }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" @click.native="$store.commit('updateSnackbar' , {show : false} )" small text
+          v-bind="attrs">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+    </v-app>
+    </template>
+
+<script>
+  import Header from './components/Header'
+  import Footer from './components/Footer'
+
+  export default {
+  name: 'App',
+
+    components: {
+    Header,
+    Footer
+    },
+    data() {
+    return {
+   }
+ },
+ props:{
+ loading:Object,
+ }
+ };
+ </script>

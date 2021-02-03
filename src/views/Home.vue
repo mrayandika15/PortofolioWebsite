@@ -1,41 +1,22 @@
 <template>
-  <div class="home">
+ <v-app>
 
-    <Header v-on:changeProfile="changeProfile"></Header>
-    <Profile :hero="hero"></Profile>
-    <Footer></Footer>
-  </div>
+<headerHome></headerHome>
+<products />
+
+</v-app>
 </template>
 
 <script>
+  import headerHome from '../components/Header-Home.vue'
+  import products from '../components/Products.vue'
   // @ is an alias to /src
-
-  import Header from '../components/Header.vue'
-  import Footer from '../components/Footer.vue'
-  import Profile from '../components/Profile.vue'
-
   export default {
     components: {
-      Header,
-      Footer,
-      Profile
+      headerHome,
+      products
     },
     name: 'Home',
-    data: function () {
-      return {
-        hero: {
-          name: 'Rayandika',
-          job: 'Front End',
-          image: 'raka.jpeg'
-        }
-      }
-    },
-    methods: {
-      changeProfile: function () {
-        this.hero.name = "Ainayya";
-        this.hero.job = "Backend"
-        this.hero.image = 'ainayya.jpg'
-      }
+
     }
-  }
 </script>
